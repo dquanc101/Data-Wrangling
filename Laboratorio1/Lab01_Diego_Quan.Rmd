@@ -1,0 +1,45 @@
+---
+title: "Laboratorio1"
+author: "Diego Quan"
+date: "8/4/2019"
+output:
+  html_document:
+    df_print: paged
+---
+## Problema 1
+```{r cache=TRUE, eval=FALSE}
+library(xlsx)
+library(dplyr)
+library(readxl)
+library(tidytext)
+library(tidyverse)
+
+addDate <- function(x){
+  df <- read_excel(x)
+  df <- df[,c("COD_VIAJE", "CLIENTE", "UBICACION", "CANTIDAD", "PILOTO", "Q", "CREDITO", "UNIDAD")]
+  df$MES <- substring(x, 1, 2)
+  df$AÑO <- substring(x, 4, 7)
+  return(df)
+}
+lista <- list.files(pattern="*.xlsx")
+frames <- lapply(lista, "addDate")
+completop <- do.call("rbind", frames)
+write.xlsx(completop, "finished.xlsx")
+```
+## Problema 2
+```{r cache=TRUE, eval=FALSE}
+p <- c("tu", "yo", "yo", "yo", "tu", "el","ella")
+v <- c(7,8,6,7,4,5,6,8,3,1,2,6,5,3,7)
+y <- c(7,2,3,4,6,6,3,3,4,6,2,4,1,2,1)
+xlist <- list(p, v, y)
+lapply(xlist, table)
+
+```
+
+## Problema 3
+
+
+```{r cache=TRUE, eval=FALSE}
+read_delim("INE_PARQUE_VEHICULAR_080219.txt", delim = "|")
+```
+

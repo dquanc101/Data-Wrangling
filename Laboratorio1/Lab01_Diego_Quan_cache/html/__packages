@@ -1,0 +1,13 @@
+base
+xlsx
+dplyr
+readxl
+tidytext
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+stringr
+forcats
